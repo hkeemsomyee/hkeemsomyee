@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>مكتبة طيبة المحبين</title>
+    <style>
+        /* تنسيقات داخلية فقط لتقليل طلبات السيرفر */
+        body { font-family: sans-serif; margin: 0; background-color: #f0f9f5; color: #1b4332; text-align: right; }
+        header { background-color: #0b4d3e; color: white; padding: 20px; text-align: center; }
+        .container { max-width: 800px; margin: auto; padding: 20px; }
+        .book-item { background: white; padding: 15px; border-radius: 8px; margin-bottom: 10px; border: 1px solid #ddd; display: flex; justify-content: space-between; align-items: center; }
+        .btn { text-decoration: none; padding: 8px 15px; border-radius: 5px; background-color: #2d6a4f; color: white; font-weight: bold; font-size: 14px; }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>مكتبة طيبة المحبين وروضة المحبوبين</h1>
+</header>
+
+<div class="container">
+    <h3>قائمة الكتب المتاحة:</h3>
+    <div id="list-container">
+        </div>
+</div>
+
+<script>
+    // مصفوفة الكتب (بيانات محلية لا تحتاج إنترنت)
+    const books = [
+        {t: "كتاب المولد النبوي", f: "te1.pdf"},
+        {t: "الأوراد والذكر", f: "te2.pdf"},
+        {t: "أنفاس هاشمية", f: "te16.pdf"},
+        {t: "المؤلف في سطور", f: "te28.pdf"}
+    ];
+
+    const container = document.getElementById('list-container');
+    
+    // بناء القائمة فوراً
+    container.innerHTML = books.map(book => `
+        <div class="book-item">
+            <strong>${book.t}</strong>
+            <a href="${book.f}" class="btn">قراءة / تحميل</a>
+        </div>
+    `).join('');
+</script>
+
+</body>
+</html>
