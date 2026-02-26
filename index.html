@@ -120,7 +120,7 @@
     <div class="main-category" style="background-color: #054d3f;">
         <img src="m3.png" class="section-logo" alt="أيقونة قسم الأوراد" width="70" height="70">
         <h2>قسم الدرر البهية والجواهر السنية في الصلاة على خير البرية علية ازكى الصلاة والسلام والتحية </h2>
-        <p class="category-desc">خزانة من الأوراد اليومية في الصلاة على سيد البرية     ، لتعزيز الصلة بالله تعالى ونبيه الكريم عليه ازكا الصلاة والتسليم     .</p>
+        <p class="category-desc">خزانة من الأوراد اليومية في الصلاة على سيد البرية، لتعزيز الصلة بالله تعالى ونبيه الكريم عليه ازكا الصلاة والتسليم.</p>
         <button class="open-btn" onclick="toggleSection('dorar')" aria-label="فتح قسم الأوراد">فتح القسم</button>
         <div id="dorar" class="books-container">
             <div class="book-item">
@@ -227,7 +227,7 @@
         {t:"التوسل المزان بسور القرآن", d:"قسم توسل ودعاء"},
         {t:"النظم الأغر في ذكر أسماء السور", d:"قسم توسل ودعاء"},
         {t:"دُرَّةُ الدُّرَرِ وَغُرَّةُ الغُرَرْ", d:"قسم توسل ودعاء"},
-        {t:"يَا مُجَلِّيْ الْقَمَرْ بِالنُّورْ", d:"قسم توسل ودعاء"},
+        {t:"يَا مُجَلِّيْ الْقَمَرْ بِالنُّورْ", d:"قسم مدح"},
         {t:"العدة في كشف الشدة", d:"قسم توسل ودعاء"},
         {t:"ريحانة القلب المهدي في تخميس لامية ابن الوردي", d:"قسم وعظ وحكم"},
         {t:"أنْفَاسٌ هَاشِمِيَّةْ فِي وَصْفِ المَدِينَةِ التَّرِيْمِيَّةْ", d:"قسم وعظ وحكم"},
@@ -241,14 +241,17 @@
         list.forEach((item, i) => {
             let fileNum = i + 1;
             
-            // ربط النظم الأغر بملف te24.pdf
-            if (item.t.includes("النظم الأغر") && prefix === 'te') {
-                fileNum = 24;
-            }
-
-            // تثبيت رقم ملف المؤلف ليكون دائماً te28
-            if (item.t === "المؤلف في سطور" && prefix === 'te') {
-                fileNum = 28;
+            // تخصيص أرقام الملفات لقصائد قسم te حسب طلبك
+            if (prefix === 'te') {
+                if (item.t.includes("دُرَّةُ الدُّرَرِ")) fileNum = 18;
+                else if (item.t.includes("يَا مُجَلِّيْ الْقَمَرْ")) fileNum = 19;
+                else if (item.t.includes("العدة في كشف الشدة")) fileNum = 20;
+                else if (item.t.includes("ريحانة القلب المهدي")) fileNum = 21;
+                else if (item.t.includes("أنْفَاسٌ هَاشِمِيَّةْ")) fileNum = 22;
+                else if (item.t.includes("حِلْيَةُ الخَدَمِ")) fileNum = 23;
+                else if (item.t.includes("النظم الأغر")) fileNum = 24;
+                else if (item.t.includes("أسْنَى المَطْلَبْ")) fileNum = 25;
+                else if (item.t === "المؤلف في سطور") fileNum = 28;
             }
 
             container.innerHTML += `
