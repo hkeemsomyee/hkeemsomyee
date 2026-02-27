@@ -7,9 +7,27 @@
       <priority>1.0</priority>
    </url>
 
-   <url><loc>https://almhben.vercel.app/alhzb1.pdf</loc><lastmod>2026-02-16</lastmod><priority>0.8</priority></url>
-   <url><loc>https://almhben.vercel.app/te1.pdf</loc><lastmod>2026-02-16</lastmod><priority>0.8</priority></url>
-   <url><loc>https://almhben.vercel.app/te2.pdf</loc><lastmod>2026-02-16</lastmod><priority>0.8</priority></url>
-   <url><loc>https://almhben.vercel.app/te3.pdf</loc><lastmod>2026-02-16</lastmod><priority>0.8</priority></url>
-   <url><loc>https://almhben.vercel.app/te4.pdf</loc><lastmod>2026-02-16</lastmod><priority>0.8</priority></url>
+   <url>
+      <loc>https://almhben.vercel.app/#tauheed</loc>
+      <lastmod>2026-02-16</lastmod>
+      <priority>0.8</priority>
+   </url>
+
+   <url>
+      <loc>https://almhben.vercel.app/#mwalid</loc>
+      <lastmod>2026-02-16</lastmod>
+      <priority>0.8</priority>
+   </url>
+
+   <url>
+      <loc>https://almhben.vercel.app/#dorar</loc>
+      <lastmod>2026-02-16</lastmod>
+      <priority>0.8</priority>
+   </url>
+
+   <url>
+      <loc>https://almhben.vercel.app/#poems</loc>
+      <lastmod>2026-02-16</lastmod>
+      <priority>0.8</priority>
+   </url>
 </urlset>
