@@ -2,7 +2,7 @@
 <html lang="ar" dir="rtl">
 <head>
     <link rel="canonical" href="https://almhben.vercel.app/" />
-<meta charset="UTF-8">
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="نرحب بكم في المكتبة الرسمية المخصصة لنشر وحفظ تراث السيد العلامة عبدالله هاشم غالب السروري، لنشر علوم التوحيد الشريفة ومنظومات السيرة النبوية العطرة والمدائح النبوية الروحانية التي تلامس القلوب وتغذي الأرواح - تضم مؤلفات في التوحيد، العقيدة، الموالد النبوية، والقصائد الروحانية.">
     
@@ -11,7 +11,10 @@
     <meta property="og:image" content="m8.png">
     <meta property="og:type" content="website">
 
-    <script async src="// دالة التحميل الذكية لإجبار المتصفح على الاسم العربي
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3471082371880025" crossorigin="anonymous"></script>
+
+    <script>
+// دالة التحميل الذكية لإجبار المتصفح على الاسم العربي
 function downloadFile(url, filename) {
     fetch(url)
         .then(response => response.blob())
@@ -65,7 +68,7 @@ function checkHash() {
     }
 }
 
-// تعبئة القوائم كما في الكود الأصلي
+// تعبئة القوائم كما في الكود الأصلي مع إضافة الإعلانات
 function fillList(id, list, prefix) {
     const container = document.getElementById(id);
     list.forEach((item, i) => {
@@ -86,6 +89,20 @@ function fillList(id, list, prefix) {
         const fileName = `${prefix}${fileNum}.pdf`;
         const downloadName = `${item.t}.pdf`;
 
+        // إضافة إعلان أدسنس بعد كل 5 كتب
+        if (i > 0 && i % 5 === 0) {
+            container.innerHTML += `
+                <div style="margin: 15px 0; text-align: center;">
+                    <ins class="adsbygoogle"
+                         style="display:block"
+                         data-ad-client="ca-pub-3471082371880025"
+                         data-ad-slot="2738310835"
+                         data-ad-format="auto"
+                         data-full-width-responsive="true"></ins>
+                    <script>(adsbygoogle = window.adsbygoogle || []).push({});<\/script>
+                </div>`;
+        }
+
         container.innerHTML += `
             <div class="book-item">
                 <div class="book-title-row">
@@ -102,12 +119,12 @@ function fillList(id, list, prefix) {
 
 // التشغيل عند تحميل الصفحة
 window.onload = () => {
-    fillList('tauheed', listTauheed, 'roda'); //
-    fillList('mwalid', listMwalid, 'mwled'); //
-    fillList('poems', listPoems, 'te'); //
-    checkHash(); // التأكد من الأقسام المفتوحة عبر الرابط
+    fillList('tauheed', listTauheed, 'roda'); 
+    fillList('mwalid', listMwalid, 'mwled'); 
+    fillList('poems', listPoems, 'te'); 
+    checkHash(); 
 };
-"></script>
+    </script>
     <title>مكتبة طيبة المحبين وروضة المحبوبين</title>
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
     <style>
@@ -182,7 +199,7 @@ window.onload = () => {
 
 أحد مشايخ دار المصطفى والمدرسين فيه 
 
-متع الله بحياته  ﴿ آمین ﴾)</p>
+متع الله بحياته  ﴿ آمین ﴾ </p>
     </section>
 
     <div class="main-category" style="background-color: #2d6a4f;">
@@ -259,48 +276,7 @@ window.onload = () => {
 </footer>
 
 <script>
-    // دالة التحميل الذكية لإجبار المتصفح على الاسم العربي
-    function downloadFile(url, filename) {
-        fetch(url)
-            .then(response => response.blob())
-            .then(blob => {
-                const blobUrl = window.URL.createObjectURL(blob);
-                const a = document.createElement('a');
-                a.href = blobUrl;
-                a.download = filename;
-                document.body.appendChild(a);
-                a.click();
-                a.remove();
-                window.URL.revokeObjectURL(blobUrl);
-            })
-            .catch(() => {
-                // في حال فشل الطريقة المتقدمة، نستخدم الطريقة التقليدية
-                const link = document.createElement('a');
-                link.href = url;
-                link.download = filename;
-                link.click();
-            });
-    }
-
-    function toggleSection(id) {
-        const section = document.getElementById(id);
-        const isVisible = section.style.display === 'block';
-        document.querySelectorAll('.books-container').forEach(c => c.style.display = 'none');
-        section.style.display = isVisible ? 'none' : 'block';
-    }
-
-    function sharePage() {
-        if (navigator.share) {
-            navigator.share({ 
-                title: 'مكتبة طيبة المحبين وروضة المحبوبين',
-                text: 'المكتبة الرسمية للسيد عبدالله هاشم السروري - تضم مؤلفات في التوحيد، العقيدة، الموالد النبوية، والقصائد الروحانية.',
-                url: window.location.href 
-            }).catch(console.error);
-        } else { 
-            alert("https://almhben.vercel.app" + window.location.href); 
-        }
-    }
-
+    // بيانات القوائم (تم الإبقاء عليها كما هي)
     const listTauheed = [
         {t:"العروة الوثيقة فيما يجب بالشرع والحقيقة", d:"منظومة منظومة في أصول العقيدة الإسلامية."},
         {t:"الروضة الأنيقة شرح العروة الوثيقة فيما يجب بالشرع والحقيقة", d:"شرح ميسر لمنظومة العروة الوثيقة."},
@@ -360,46 +336,20 @@ window.onload = () => {
         {t:"المؤلف في سطور", d:"نبذة عن حياة السيد عبدالله هاشم السروري."}
     ];
 
-    function fillList(id, list, prefix) {
-        const container = document.getElementById(id);
-        list.forEach((item, i) => {
-            let fileNum = i + 1;
-            if (prefix === 'te') {
-                if (item.t.includes("دُرَّةُ الدُّرَرِ")) fileNum = 18;
-                else if (item.t.includes("يَا مُجَلِّيْ الْقَمَرْ")) fileNum = 19;
-                else if (item.t.includes("العدة في كشف الشدة")) fileNum = 20;
-                else if (item.t.includes("ريحانة القلب المهدي")) fileNum = 21;
-                else if (item.t.includes("أنْفَاسٌ هَاشِمِيَّةْ")) fileNum = 22;
-                else if (item.t.includes("حِلْيَةُ الخَدَمِ")) fileNum = 23;
-                else if (item.t.includes("النظم الأغر")) fileNum = 24;
-                else if (item.t.includes("أسْنَى المَطْلَبْ")) fileNum = 25;
-                else if (item.t === "المؤلف في سطور") fileNum = 28;
-            }
-
-            const fileName = `${prefix}${fileNum}.pdf`;
-            const downloadName = `${item.t}.pdf`;
-
-            container.innerHTML += `
-                <div class="book-item">
-                    <div class="book-title-row">
-                        <strong>${item.t}</strong>
-                        <div>
-                            <a href="${fileName}" class="btn-link btn-view">قراءة</a>
-                            <button onclick="downloadFile('${fileName}', '${downloadName}')" class="btn-link btn-down">تحميل</button>
-                        </div>
-                    </div>
-                    <div class="book-desc">${item.d}</div>
-                </div>`;
-        });
+    function sharePage() {
+        if (navigator.share) {
+            navigator.share({ 
+                title: 'مكتبة طيبة المحبين وروضة المحبوبين',
+                text: 'المكتبة الرسمية للسيد عبدالله هاشم السروري - تضم مؤلفات في التوحيد، العقيدة، الموالد النبوية، والقصائد الروحانية.',
+                url: window.location.href 
+            }).catch(console.error);
+        } else { 
+            alert("رابط الموقع: " + window.location.href); 
+        }
     }
-
-    window.onload = () => {
-        fillList('tauheed', listTauheed, 'roda');
-        fillList('mwalid', listMwalid, 'mwled');
-        fillList('poems', listPoems, 'te');
-    };
 </script>
-</body><script type="application/ld+json">
+
+<script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "ItemList",
@@ -432,4 +382,6 @@ window.onload = () => {
 }
 </script>
 
+</body>
 </html>
+
