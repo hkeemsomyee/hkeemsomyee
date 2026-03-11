@@ -2,7 +2,7 @@
 <html lang="ar" dir="rtl">
 <head>
     <link rel="canonical" href="https://almhben.vercel.app/" />
-    <meta charset="UTF-8">
+<meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="نرحب بكم في المكتبة الرسمية المخصصة لنشر وحفظ تراث السيد العلامة عبدالله هاشم غالب السروري، لنشر علوم التوحيد الشريفة ومنظومات السيرة النبوية العطرة والمدائح النبوية الروحانية التي تلامس القلوب وتغذي الأرواح - تضم مؤلفات في التوحيد، العقيدة، الموالد النبوية، والقصائد الروحانية.">
     
@@ -11,10 +11,7 @@
     <meta property="og:image" content="m8.png">
     <meta property="og:type" content="website">
 
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3471082371880025" crossorigin="anonymous"></script>
-
-    <script>
-// دالة التحميل الذكية لإجبار المتصفح على الاسم العربي
+    <script async src="// دالة التحميل الذكية لإجبار المتصفح على الاسم العربي
 function downloadFile(url, filename) {
     fetch(url)
         .then(response => response.blob())
@@ -68,7 +65,7 @@ function checkHash() {
     }
 }
 
-// تعبئة القوائم كما في الكود الأصلي مع إضافة الإعلانات
+// تعبئة القوائم كما في الكود الأصلي
 function fillList(id, list, prefix) {
     const container = document.getElementById(id);
     list.forEach((item, i) => {
@@ -89,20 +86,6 @@ function fillList(id, list, prefix) {
         const fileName = `${prefix}${fileNum}.pdf`;
         const downloadName = `${item.t}.pdf`;
 
-        // إضافة إعلان أدسنس بعد كل 5 كتب
-        if (i > 0 && i % 5 === 0) {
-            container.innerHTML += `
-                <div style="margin: 15px 0; text-align: center;">
-                    <ins class="adsbygoogle"
-                         style="display:block"
-                         data-ad-client="ca-pub-3471082371880025"
-                         data-ad-slot="2738310835"
-                         data-ad-format="auto"
-                         data-full-width-responsive="true"></ins>
-                    <script>(adsbygoogle = window.adsbygoogle || []).push({});<\/script>
-                </div>`;
-        }
-
         container.innerHTML += `
             <div class="book-item">
                 <div class="book-title-row">
@@ -119,43 +102,105 @@ function fillList(id, list, prefix) {
 
 // التشغيل عند تحميل الصفحة
 window.onload = () => {
-    fillList('tauheed', listTauheed, 'roda'); 
-    fillList('mwalid', listMwalid, 'mwled'); 
-    fillList('poems', listPoems, 'te'); 
-    checkHash(); 
+    fillList('tauheed', listTauheed, 'roda'); //
+    fillList('mwalid', listMwalid, 'mwled'); //
+    fillList('poems', listPoems, 'te'); //
+    checkHash(); // التأكد من الأقسام المفتوحة عبر الرابط
 };
-    </script>
+"></script>
     <title>مكتبة طيبة المحبين وروضة المحبوبين</title>
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
     <style>
+        /* التنسيقات العامة */
         body { font-family: 'Cairo', sans-serif; margin: 0; background-color: #f0f9f5; color: #1b4332; padding-bottom: 80px; line-height: 1.6; }
-        header { background-color: #0b4d3e; color: white; padding: 20px 0; text-align: center; position: sticky; top: 0; z-index: 1000; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
-        header img { width: 80px; height: 80px; border-radius: 8px; object-fit: cover; }
-        .container { max-width: 900px; margin: auto; padding: 15px; }
+                /* الشعار ممتد عرضياً من الطرف للطرف مع الحفاظ على الارتفاع */
+        header img { 
+            width: 100vw;      /* عرض كامل الشاشة (viewport width) */
+            height: 100px;     /* يمكنك تعديل الارتفاع (مثلاً 100px أو 120px) حسب رغبتك */
+            border-radius: 0;  /* إزالة الحواف المستديرة لملء الزوايا */
+            object-fit: fill;  /* لجعل الصورة تتمدد لتملأ العرض بالكامل */
+            display: block;    /* لضمان عدم وجود فراغات تحت الصورة */
+            margin-right: calc(-50vw + 50%); /* لضمان التمركز في حال وجود padding */
+            margin-left: calc(-50vw + 50%);  /* لضمان التمركز في حال وجود padding */
+        }
+
+        header {
+            padding: 0;        /* إزالة أي مسافات داخلية في الهيدر */
+            overflow: hidden;  /* لمنع ظهور شريط تمرير أفقي */
+        }
+
+
+        /* الملف الشخصي للمؤلف */
         .author-profile { background: white; padding: 25px; border-radius: 20px; margin-bottom: 25px; border: 1px solid #d1e7dd; text-align: right; }
-        .author-img { width: 110px; height: 110px; border-radius: 50%; border: 3px solid #0b7a61; object-fit: cover; }
-        .main-category { background-color: #0b7a61; color: white; border-radius: 20px; margin-bottom: 20px; padding: 20px; text-align: center; }
-        .section-logo { width: 70px; height: 70px; border-radius: 50%; background: white; padding: 5px; margin-bottom: 10px; }
-        .open-btn { background-color: white; color: #0b7a61; border: none; padding: 12px 25px; border-radius: 25px; font-weight: bold; cursor: pointer; transition: 0.3s; min-height: 44px; }
-        .category-desc { padding: 0 15px 15px; font-size: 14px; color: #e0f2f1; text-align: justify; }
-        .books-container { display: none; margin-top: 15px; background: #fff; border-radius: 15px; padding: 15px; color: #1b4332; text-align: right; border: 1px solid #eee; }
-        .book-item { background: #f9f9f9; border-right: 5px solid #0b7a61; margin-bottom: 10px; padding: 12px; border-radius: 8px; }
+        .author-img { width: 120px; height: 120px; border-radius: 50%; border: 3px solid #0b7a61; object-fit: cover; display: block; margin: 0 auto 15px; }
+
+        /* التصنيفات الرئيسية */
+        .main-category { 
+            background-color: #0b7a61; 
+            color: white; 
+            border-radius: 20px; 
+            margin-bottom: 20px; 
+            padding: 25px 20px; 
+            text-align: center; 
+            transition: transform 0.3s ease; /* تأثير حركي عند التفاعل */
+        }
+        .main-category:hover { transform: translateY(-5px); } /* يرتفع القسم قليلاً عند التأشير عليه */
+
+        /* تحسين شعارات الأقسام لتبدو مناسبة تماماً */
+        .section-logo { 
+            width: 80px; 
+            height: 80px; 
+            border-radius: 50%; 
+            background: white; 
+            padding: 8px; 
+            margin-bottom: 15px; 
+            object-fit: contain; /* يضمن عدم قص الصورة أو تمطيطها */
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        /* الأزرار والنصوص */
+        .open-btn { background-color: white; color: #0b7a61; border: none; padding: 12px 30px; border-radius: 25px; font-weight: bold; cursor: pointer; transition: 0.3s; min-height: 44px; font-size: 16px; }
+        .open-btn:hover { background-color: #e0f2f1; color: #084d3e; }
+        
+        .category-desc { padding: 0 15px 15px; font-size: 15px; color: #e0f2f1; text-align: center; }
+
+        /* حاوية الكتب */
+        .books-container { display: none; margin-top: 15px; background: #fff; border-radius: 15px; padding: 15px; color: #1b4332; text-align: right; border: 1px solid #eee; box-shadow: inset 0 2px 5px rgba(0,0,0,0.05); }
+        .book-item { background: #f9f9f9; border-right: 5px solid #0b7a61; margin-bottom: 12px; padding: 15px; border-radius: 8px; transition: 0.2s; }
+        .book-item:hover { background: #f0fdf4; }
+
         .book-title-row { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; }
-        .book-desc { font-size: 13px; color: #555; margin-top: 8px; border-top: 1px dashed #0b7a61; padding-top: 6px; text-align: justify; }
-        .btn-link { text-decoration: none; padding: 10px 15px; border-radius: 5px; font-size: 12px; font-weight: bold; display: inline-block; min-width: 60px; text-align: center; cursor: pointer; }
-        .btn-view { background: #e0f2f1; color: #0b7a61; }
-        .btn-down { background: #0b7a61; color: white; border: none; }
-        .share-fab { position: fixed; bottom: 20px; left: 20px; background-color: #d4a373; color: white; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 10px rgba(0,0,0,0.3); cursor: pointer; z-index: 2000; border: none; font-size: 24px; }
+        .book-desc { font-size: 14px; color: #555; margin-top: 8px; border-top: 1px dashed #0b7a61; padding-top: 6px; text-align: justify; }
+
+        /* روابط وأزرار التحميل */
+        .btn-link { text-decoration: none; padding: 8px 18px; border-radius: 8px; font-size: 13px; font-weight: bold; display: inline-block; min-width: 70px; text-align: center; cursor: pointer; transition: 0.2s; }
+        .btn-view { background: #e0f2f1; color: #0b7a61; border: 1px solid #0b7a61; }
+        .btn-down { background: #0b7a61; color: white; border: none; margin-right: 5px; }
+        .btn-link:hover { opacity: 0.8; }
+
+        /* زر المشاركة العائم */
+        .share-fab { position: fixed; bottom: 25px; left: 25px; background-color: #d4a373; color: white; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 15px rgba(0,0,0,0.3); cursor: pointer; z-index: 2000; border: none; font-size: 24px; transition: 0.3s; }
+        .share-fab:hover { transform: scale(1.1); background-color: #bc8a5f; }
+
+        /* الفوتر (أسفل الصفحة) */
         footer { text-align: center; padding: 30px; background: #fff; margin-top: 20px; border-top: 2px solid #0b7a61; }
         .footer-links a { color: #0b7a61; text-decoration: none; margin: 0 10px; font-weight: bold; font-size: 14px; padding: 10px; display: inline-block; }
     </style>
 </head>
 <body>
 
-<header>
-    <img src="logo.png" alt="شعار مكتبة طيبة المحبين" width="80" height="80">
-    <h1>مكتبة طيبة المحبين وروضة المحبوبين</h1>
+<header style="text-align: center; background-color: #0b4d3e; padding: 0;">
+    <img src="logo.png" alt="شعار مكتبة طيبة المحبين" 
+         style="width: 100%; height: auto; max-height: 150px; display: block; object-fit: cover; border-radius: 0;">
+    
+    <h1 style="color: #ffffff; margin: 0; padding: 15px 10px; text-align: center; font-size: 1.5rem; width: 100%; display: block;">
+        مكتبة طيبة المحبين وروضة المحبوبين
+    </h1>
 </header>
+
 
 <div class="container">
     <section class="author-profile">
@@ -199,7 +244,7 @@ window.onload = () => {
 
 أحد مشايخ دار المصطفى والمدرسين فيه 
 
-متع الله بحياته  ﴿ آمین ﴾ </p>
+متع الله بحياته  ﴿ آمین ﴾)</p>
     </section>
 
     <div class="main-category" style="background-color: #2d6a4f;">
@@ -276,7 +321,48 @@ window.onload = () => {
 </footer>
 
 <script>
-    // بيانات القوائم (تم الإبقاء عليها كما هي)
+    // دالة التحميل الذكية لإجبار المتصفح على الاسم العربي
+    function downloadFile(url, filename) {
+        fetch(url)
+            .then(response => response.blob())
+            .then(blob => {
+                const blobUrl = window.URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = blobUrl;
+                a.download = filename;
+                document.body.appendChild(a);
+                a.click();
+                a.remove();
+                window.URL.revokeObjectURL(blobUrl);
+            })
+            .catch(() => {
+                // في حال فشل الطريقة المتقدمة، نستخدم الطريقة التقليدية
+                const link = document.createElement('a');
+                link.href = url;
+                link.download = filename;
+                link.click();
+            });
+    }
+
+    function toggleSection(id) {
+        const section = document.getElementById(id);
+        const isVisible = section.style.display === 'block';
+        document.querySelectorAll('.books-container').forEach(c => c.style.display = 'none');
+        section.style.display = isVisible ? 'none' : 'block';
+    }
+
+    function sharePage() {
+        if (navigator.share) {
+            navigator.share({ 
+                title: 'مكتبة طيبة المحبين وروضة المحبوبين',
+                text: 'المكتبة الرسمية للسيد عبدالله هاشم السروري - تضم مؤلفات في التوحيد، العقيدة، الموالد النبوية، والقصائد الروحانية.',
+                url: window.location.href 
+            }).catch(console.error);
+        } else { 
+            alert("https://almhben.vercel.app" + window.location.href); 
+        }
+    }
+
     const listTauheed = [
         {t:"العروة الوثيقة فيما يجب بالشرع والحقيقة", d:"منظومة منظومة في أصول العقيدة الإسلامية."},
         {t:"الروضة الأنيقة شرح العروة الوثيقة فيما يجب بالشرع والحقيقة", d:"شرح ميسر لمنظومة العروة الوثيقة."},
@@ -336,20 +422,46 @@ window.onload = () => {
         {t:"المؤلف في سطور", d:"نبذة عن حياة السيد عبدالله هاشم السروري."}
     ];
 
-    function sharePage() {
-        if (navigator.share) {
-            navigator.share({ 
-                title: 'مكتبة طيبة المحبين وروضة المحبوبين',
-                text: 'المكتبة الرسمية للسيد عبدالله هاشم السروري - تضم مؤلفات في التوحيد، العقيدة، الموالد النبوية، والقصائد الروحانية.',
-                url: window.location.href 
-            }).catch(console.error);
-        } else { 
-            alert("رابط الموقع: " + window.location.href); 
-        }
-    }
-</script>
+    function fillList(id, list, prefix) {
+        const container = document.getElementById(id);
+        list.forEach((item, i) => {
+            let fileNum = i + 1;
+            if (prefix === 'te') {
+                if (item.t.includes("دُرَّةُ الدُّرَرِ")) fileNum = 18;
+                else if (item.t.includes("يَا مُجَلِّيْ الْقَمَرْ")) fileNum = 19;
+                else if (item.t.includes("العدة في كشف الشدة")) fileNum = 20;
+                else if (item.t.includes("ريحانة القلب المهدي")) fileNum = 21;
+                else if (item.t.includes("أنْفَاسٌ هَاشِمِيَّةْ")) fileNum = 22;
+                else if (item.t.includes("حِلْيَةُ الخَدَمِ")) fileNum = 23;
+                else if (item.t.includes("النظم الأغر")) fileNum = 24;
+                else if (item.t.includes("أسْنَى المَطْلَبْ")) fileNum = 25;
+                else if (item.t === "المؤلف في سطور") fileNum = 28;
+            }
 
-<script type="application/ld+json">
+            const fileName = `${prefix}${fileNum}.pdf`;
+            const downloadName = `${item.t}.pdf`;
+
+            container.innerHTML += `
+                <div class="book-item">
+                    <div class="book-title-row">
+                        <strong>${item.t}</strong>
+                        <div>
+                            <a href="${fileName}" class="btn-link btn-view">قراءة</a>
+                            <button onclick="downloadFile('${fileName}', '${downloadName}')" class="btn-link btn-down">تحميل</button>
+                        </div>
+                    </div>
+                    <div class="book-desc">${item.d}</div>
+                </div>`;
+        });
+    }
+
+    window.onload = () => {
+        fillList('tauheed', listTauheed, 'roda');
+        fillList('mwalid', listMwalid, 'mwled');
+        fillList('poems', listPoems, 'te');
+    };
+</script>
+</body><script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "ItemList",
@@ -382,6 +494,4 @@ window.onload = () => {
 }
 </script>
 
-</body>
 </html>
-
