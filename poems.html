@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3471082371880025" crossorigin="anonymous"></script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>قسم القصائد - مكتبة طيبة المحبين</title>
+    <meta name="description" content="ديوان القصائد الروحانية والمدائح النبوية في مكتبة طيبة المحبين، تصفح وحمل قصائد المدح والتحاميد والتوسلات بصيغة PDF.">
+    <meta name="keywords" content="قصائد نبوية, مدائح, طيبة المحبين, نهج البردة, توسلات, كتب PDF">
+
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f4f7f6; margin: 0; padding: 20px; }
+        .container { max-width: 850px; margin: auto; }
+        .header-box { background-color: #144d34; color: white; padding: 30px; border-radius: 15px; text-align: center; margin-bottom: 20px; }
+        .book-card { background: white; margin-bottom: 12px; padding: 15px 20px; border-radius: 10px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); border-right: 5px solid #144d34; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; }
+        .book-info { flex: 1; min-width: 250px; }
+        .book-title { color: #144d34; margin: 0 0 5px 0; font-size: 18px; font-weight: bold; }
+        .book-desc { color: #666; font-size: 14px; margin: 0; }
+        .btn-group { display: flex; gap: 8px; margin-top: 10px; }
+        .btn { padding: 6px 18px; border-radius: 6px; text-decoration: none; font-weight: bold; font-size: 13px; transition: 0.3s; text-align: center; }
+        .read-btn { border: 1px solid #144d34; color: #144d34; }
+        .read-btn:hover { background-color: #f0f7f4; }
+        .download-btn { background-color: #144d34; color: white !important; }
+        .download-btn:hover { background-color: #0d3625; }
+        .back-home { display: block; text-align: center; margin-top: 30px; color: #2c3e50; text-decoration: none; font-weight: bold; }
+        
+        @media (max-width: 600px) {
+            .book-card { flex-direction: column; text-align: center; }
+            .btn-group { justify-content: center; width: 100%; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="header-box">
+        <img src="m4.png" width="70" alt="أيقونة القسم">
+        <h1>قسم قصائد طيبة المحبين</h1>
+        <p>ديوان القصائد الروحانية والمدائح النبوية</p>
+    </div>
+
+    <div id="poems-list"></div>
+
+    <a href="index.html" class="back-home">✖ العودة للمكتبة الرئيسية</a>
+</div>
+
+<script>
+    const listPoems = [
+        {t:"قسم تحاميد", d:"باب تحاميد وجلالات وتصليات على سيد السادات محمد ﷺ"},
+        {t:"قسم جلالات", d:"باب تحاميد وجلالات وتصليات على سيد السادات محمد ﷺ"},
+        {t:"قسم تصليات", d:"باب تحاميد وجلالات وتصليات على سيد السادات محمد ﷺ"},
+        {t:"قسم قصائد ذكرى المولد النبوي", d:"بُابُ المَدَائِحُ النَّبَويةِ لِخَيْرِ البَرِيَّةِ مُحمَّدٌ ﷺ"},
+        {t:"قسم الإِبْهاج في قصة الإسراء والمعراج", d:"بُابُ المَدَائِحُ النَّبَويةِ لِخَيْرِ البَرِيَّةِ مُحمَّدٌ ﷺ"},
+        {t:"العمدَةُ على نَهْجِ البُردة", d:"بُابُ المَدَائِحُ النَّبَويةِ لِخَيْرِ البَرِيَّةِ مُحمَّدٌ ﷺ"},
+        {t:"الرَّندَةُ على نَهْجِ البُردة", d:"بُابُ المَدَائِحُ النَّبَويةِ لِخَيْرِ البَرِيَّةِ مُحمَّدٌ ﷺ"},
+        {t:"الزُبْدَةُ على نَهْجِ البُردة", d:"بُابُ المَدَائِحُ النَّبَويةِ لِخَيْرِ البَرِيَّةِ مُحمَّدٌ ﷺ"},
+        {t:"القصيدة المحمدية", d:"بُابُ المَدَائِحُ النَّبَويةِ لِخَيْرِ البَرِيَّةِ مُحمَّدٌ ﷺ"},
+        {t:"الرمزية على نهج الهمزية", d:"بُابُ المَدَائِحُ النَّبَويةِ لِخَيْرِ البَرِيَّةِ مُحمَّدٌ ﷺ"},
+        {t:"(( قصيدة ))", d:"بُابُ المَدَائِحُ النَّبَويةِ لِخَيْرِ البَرِيَّةِ مُحمَّدٌ ﷺ"},
+        {t:"حَقِيقَةُ الْحَقَائِق وَرَقِيقَةُ الرَّقَائِق", d:"لِكُلِّ عَارِفٍ لَبِيْبٍ ذَائِقْ."},
+        {t:"الْقَصِيدَةُ الْغَزَلِيَّةُ فِي الْحَقِيقَةِ الْأَزَلِيَّةِ", d:"بُابُ المَدَائِحُ النَّبَويةِ."},
+        {t:"(( وَاللَّـهِ مَا عَرَفَ النَّبِيَّ سِواه ))", d:"قسم في فضائل وشمائل سيد الأواخر والأوائل ﷺ"},
+        {t:"الوسيلة الحسناء بأسماء الله الحسنى", d:"قسم توسل ودعاء"},
+        {t:"التوسل الأسناء بأسماء الله الحسنى", d:"قسم توسل ودعاء"},
+        {t:"التوسل المزان بسور القرآن", d:"قسم توسل ودعاء"},
+        {t:"النظم الأغر في ذكر أسماء السور", d:"قسم توسل ودعاء"},
+        {t:"دُرَّةُ الدُّرَرِ وَغُرَّةُ الغُرَرْ", d:"قسم توسل ودعاء"},
+        {t:"يَا مُجَلِّيْ الْقَمَرْ بِالنُّورْ", d:"قسم مدح"},
+        {t:"العدة في كشف الشدة", d:"قسم توسل ودعاء"},
+        {t:"ريحانة القلب المهدي في تخميس لامية ابن الوردي", d:"تخميس لامية ابن الوردي."},
+        {t:"أنْفَاسٌ هَاشِمِيَّةْ فِي وَصْفِ المَدِينَةِ", d:"قسم وعظ وحكم."},
+        {t:"حِلْيَةُ الخَدَمِ فِي الحَمْدِللَّهِ الأتَمْ", d:"قسم الحمد"},
+        {t:"أسْنَى المَطْلَبْ بِاستِغْفَارِ شهرِ رجبْ", d:"قسم الإستغفار"},
+        {t:"المؤلف في سطور", d:"نبذة عن حياة السيد عبدالله هاشم السروري."}
+    ];
+
+    const container = document.getElementById('poems-list');
+    listPoems.forEach((poem, index) => {
+        const fileNum = index + 1;
+        const fileName = `te${fileNum}.pdf`;
+        container.innerHTML += `
+            <div class="book-card">
+                <div class="book-info">
+                    <h3 class="book-title">${poem.t}</h3>
+                    <p class="book-desc">${poem.d}</p>
+                </div>
+                <div class="btn-group">
+                    <a href="${fileName}" target="_blank" class="btn read-btn">قراءة</a>
+                    <a href="${fileName}" download="${poem.t}.pdf" class="btn download-btn">تحميل</a>
+                </div>
+            </div>
+        `;
+    });
+</script>
+
+</body>
+</html>

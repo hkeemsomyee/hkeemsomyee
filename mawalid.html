@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3471082371880025" crossorigin="anonymous"></script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>قسم الموالد النبوية - مكتبة طيبة المحبين</title>
+    <meta name="description" content="مجموعة من الموالد النبوية (أطلس السِّير النبوية الغرر) التي تسرد محطات ولادة ونشأة خير البرية ﷺ بصيغة PDF.">
+    <meta name="keywords" content="موالد نبوية, أطلس السير النبوية, طيبة المحبين, سيرة نبوية, كتب PDF">
+    
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f4f7f6; margin: 0; padding: 20px; }
+        .container { max-width: 800px; margin: auto; }
+        .header-box { background-color: #086351; color: white; padding: 30px; border-radius: 15px; text-align: center; margin-bottom: 20px; }
+        .book-card { background: white; margin-bottom: 15px; padding: 20px; border-radius: 12px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); border-right: 5px solid #086351; }
+        .book-title { color: #086351; margin: 0 0 10px 0; font-size: 19px; }
+        .book-desc { color: #555; font-size: 15px; margin-bottom: 15px; }
+        .btn-group { display: flex; gap: 10px; }
+        .btn { padding: 8px 25px; border-radius: 8px; text-decoration: none; font-weight: bold; font-size: 14px; transition: 0.3s; text-align: center; }
+        .read-btn { border: 2px solid #086351; color: #086351; }
+        .read-btn:hover { background-color: #e8f5f3; }
+        .download-btn { background-color: #086351; color: white !important; }
+        .download-btn:hover { background-color: #064d3e; }
+        .back-home { display: block; text-align: center; margin-top: 30px; color: #2c3e50; text-decoration: none; font-weight: bold; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="header-box">
+        <h1>قسم الموالد النبوية</h1>
+        <p>(أطلس السِّير النبوية الغرر) ﷺ</p>
+    </div>
+
+    <div id="books-list"></div>
+
+    <a href="index.html" class="back-home">✖ العودة للمكتبة الرئيسية</a>
+</div>
+
+<script>
+    const mwalidData = [
+        {t:"مولد شراب الألباب", d:"شراب الألباب العرفانية في مولد شجرة الأصل النورانية سيدنا محمد ﷺ"},
+        {t:"مولد عرف الخُزام", d:"عرف الخُزام في مولد غاية القصد والمرام سيدنا محمد ﷺ"},
+        {t:"مولد الإنشراح الصدري", d:"الإنشراح الصدري في مولد الكوكب الدري سيدنا محمد ﷺ"},
+        {t:"مولد فيض ربي", d:"فيض ربي الرحيم الودود في مولد روح الوجود سيدنا محمد ﷺ"},
+        {t:"مولد الدرر البهية", d:"الدرر البهية الحِسان في مولد سيد ولد عدنان سيدنا محمد ﷺ"},
+        {t:"مولد عين التسنيم", d:"عين التسنيم في مولد صاحب الخلق العظيم سيدنا محمد ﷺ"},
+        {t:"مولد أريج الأزهار", d:"أريج الأزهار الشذية في السيرة النبوية"},
+        {t:"مولد المِسْك الأذفر", d:"المِسْك الأذفر في مولد صَاحِب حَوضِ الكَوثر سيدنا محمد ﷺ"},
+        {t:"مولد كِيمْياء أرْبَاب القلوب", d:"كِيمْياء أرْبَاب القلوب في مولد الحَبيب المَحْبُوب سيدنا محمد ﷺ"},
+        {t:"مولد الروائح العطرية", d:"الروائح العطرية في مولد أفضل البرية سيدنا محمد ﷺ"},
+        {t:"مولد رحيق الشراب", d:"رحيق الشراب الأحلى في مولد من دنا فتدلى سيدنا محمد ﷺ"},
+        {t:"مولد العسجد", d:"العسجد في مولد النبي الأمجد والرسول الممجد سيدنا محمد ﷺ"},
+        {t:"مولد المِسْك الفوَّاح", d:"المِسْك الفوَّاح في مولد المصباح سيدنا محمد ﷺ"},
+        {t:"مولد الترياق", d:"الترياق في مولد صفوة الخلاق سيدنا محمد ﷺ"},
+        {t:"مولد الإتحاف", d:"الإتحاف في مولد كامل الأوصاف سيدنا محمد رسول الله ﷺ"},
+        {t:"مولد عبير الزهر", d:"عبير الزهر الشذي في مولد النبي محمد ﷺ"},
+        {t:"مولد جالي الصدا", d:"جالي الصدا في مولد بدر الهدى سيدنا محمد ﷺ"},
+        {t:"مولد نَدُّ النادي", d:"نَدُّ النادي في مولد الهادي سيدنا محمد ﷺ"},
+        {t:"مولد العود النَّدي", d:"العود النَّدي في المولد المحمدي ﷺ"},
+        {t:"مولد اللُّبَاب", d:"اللُّبَاب في مولد جوهر الألباب وأحب الأحباب سيدنا محمد ﷺ"}
+    ];
+
+    const container = document.getElementById('books-list');
+    mwalidData.forEach((book, index) => {
+        const fileName = `mwled${index + 1}.pdf`;
+        container.innerHTML += `
+            <div class="book-card">
+                <h3 class="book-title">${book.t}</h3>
+                <p class="book-desc">${book.d}</p>
+                <div class="btn-group">
+                    <a href="${fileName}" target="_blank" class="btn read-btn">قراءة</a>
+                    <a href="${fileName}" download="${book.t}.pdf" class="btn download-btn">تحميل</a>
+                </div>
+            </div>
+        `;
+    });
+</script>
+
+</body>
+</html>
