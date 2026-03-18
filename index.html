@@ -11,7 +11,26 @@
     <meta property="og:image" content="m8.png">
     <meta property="og:type" content="website">
 
-    <script async src="// دالة التحميل الذكية لإجبار المتصفح على الاسم العربي
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3471082371880025" crossorigin="anonymous"></script>
+
+<script>
+// 1. تعريف بيانات الكتب (القوائم)
+var listTauheed = [
+    { t: "العروة الوثيقة", d: "منظومة مباركة في أصول العقيدة الإسلامية." },
+    { t: "الروضة الأنيقة", d: "شرح ميسر وتفصيلي لمنظومة العروة الوثيقة." },
+    { t: "الدُّرُّ المُنَظَّمْ", d: "بيان معاني وتوحيد الاسم الأعظم وفضائله." }
+];
+
+var listMwalid = [
+    { t: "مولد السيرة النبوية", d: "سرد لمحطات ولادة ونشأة خير البرية ﷺ." }
+];
+
+var listPoems = [
+    { t: "دُرَّةُ الدُّرَرِ", d: "قصائد في مدح خير البشر." },
+    { t: "المؤلف في سطور", d: "نبذة عن حياة المؤلف السيد عبدالله هاشم السروري." }
+];
+
+// 2. دالة التحميل الذكية
 function downloadFile(url, filename) {
     fetch(url)
         .then(response => response.blob())
@@ -33,53 +52,31 @@ function downloadFile(url, filename) {
         });
 }
 
-// دالة فتح الأقسام مع تحديث الرابط (URL)
+// 3. دالة فتح الأقسام
 function toggleSection(id) {
     const section = document.getElementById(id);
+    if (!section) return;
     const isVisible = section.style.display === 'block';
-    
-    // إغلاق جميع الأقسام المفتوحة
     document.querySelectorAll('.books-container').forEach(c => c.style.display = 'none');
     
     if (!isVisible) {
         section.style.display = 'block';
-        // تحديث رابط الصفحة ليحتوي على معرف القسم
         window.history.pushState(null, null, '#' + id);
     } else {
         section.style.display = 'none';
-        // العودة للرابط الأساسي عند الإغلاق
         window.history.pushState(null, null, window.location.pathname);
     }
 }
 
-// ميزة ذكية: فتح القسم تلقائياً إذا كان الرابط يحتوي على معرف (مثلاً عند الضغط على "اتصل بنا")
-function checkHash() {
-    const hash = window.location.hash.replace('#', '');
-    if (hash && document.getElementById(hash)) {
-        const target = document.getElementById(hash);
-        if (target.classList.contains('books-container')) {
-            toggleSection(hash);
-        } else {
-            target.scrollIntoView({ behavior: 'smooth' });
-        }
-    }
-}
-
-// تعبئة القوائم كما في الكود الأصلي
+// 4. دالة تعبئة القوائم في الصفحة
 function fillList(id, list, prefix) {
     const container = document.getElementById(id);
+    if (!container || !list) return;
+    
     list.forEach((item, i) => {
         let fileNum = i + 1;
-        // المنطق الخاص بتسمية الملفات
         if (prefix === 'te') {
             if (item.t.includes("دُرَّةُ الدُّرَرِ")) fileNum = 18;
-            else if (item.t.includes("يَا مُجَلِّيْ الْقَمَرْ")) fileNum = 19;
-            else if (item.t.includes("العدة في كشف الشدة")) fileNum = 20;
-            else if (item.t.includes("ريحانة القلب المهدي")) fileNum = 21;
-            else if (item.t.includes("أنْفَاسٌ هَاشِمِيَّةْ")) fileNum = 22;
-            else if (item.t.includes("حِلْيَةُ الخَدَمِ")) fileNum = 23;
-            else if (item.t.includes("النظم الأغر")) fileNum = 24;
-            else if (item.t.includes("أسْنَى المَطْلَبْ")) fileNum = 25;
             else if (item.t === "المؤلف في سطور") fileNum = 28;
         }
 
@@ -91,7 +88,7 @@ function fillList(id, list, prefix) {
                 <div class="book-title-row">
                     <strong>${item.t}</strong>
                     <div>
-                        <a href="${fileName}" class="btn-link btn-view">قراءة</a>
+                        <a href="${fileName}" class="btn-link btn-view" target="_blank">قراءة</a>
                         <button onclick="downloadFile('${fileName}', '${downloadName}')" class="btn-link btn-down">تحميل</button>
                     </div>
                 </div>
@@ -100,14 +97,20 @@ function fillList(id, list, prefix) {
     });
 }
 
-// التشغيل عند تحميل الصفحة
+// 5. التشغيل عند تحميل الصفحة
 window.onload = () => {
-    fillList('tauheed', listTauheed, 'roda'); //
-    fillList('mwalid', listMwalid, 'mwled'); //
-    fillList('poems', listPoems, 'te'); //
-    checkHash(); // التأكد من الأقسام المفتوحة عبر الرابط
+    fillList('tauheed', listTauheed, 'roda');
+    fillList('mwalid', listMwalid, 'mwled');
+    fillList('poems', listPoems, 'te');
+    
+    // التأكد من الروابط المباشرة للأقسام
+    const hash = window.location.hash.replace('#', '');
+    if (hash && document.getElementById(hash)) {
+        toggleSection(hash);
+    }
 };
-"></script>
+</script>
+
     <title>مكتبة طيبة المحبين وروضة المحبوبين</title>
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
     <style>
@@ -307,7 +310,10 @@ window.onload = () => {
 
 <footer>
     <div class="footer-links">
-        <a href="index.html">الرئيسية</a> | <a href="privacy.html">سياسة الخصوصية</a> | <a href="#contact">اتصل بنا</a>
+        <a href="index.html">الرئيسية</a> | 
+        <a href="about.html">عن المكتبة</a> | 
+        <a href="privacy.html">سياسة الخصوصية</a> | 
+        <a href="#contact">اتصل بنا</a>
     </div>
     <p>جميع الحقوق محفوظة &copy; مكتبة طيبة المحبين 2026</p>
 </footer>
@@ -391,11 +397,23 @@ window.onload = () => {
         });
     }
 
-    window.onload = () => {
-        fillList('tauheed', listTauheed, 'roda');
-        fillList('mwalid', listMwalid, 'mwled');
-        fillList('poems', listPoems, 'te');
-    };
+window.onload = () => {
+    // هذا الكود يتأكد من وجود البيانات قبل عرضها لمنع تعطل الموقع
+    if (typeof listTauheed !== 'undefined') fillList('tauheed', listTauheed, 'roda');
+    if (typeof listMwalid !== 'undefined') fillList('mwalid', listMwalid, 'mwled');
+    if (typeof listPoems !== 'undefined') fillList('poems', listPoems, 'te');
+    
+    // تشغيل ميزة الانتقال للأقسام بسلاسة
+    if (typeof checkHash === "function") {
+        checkHash();
+    } else {
+        const hash = window.location.hash.replace('#', '');
+        if (hash && document.getElementById(hash)) {
+            toggleSection(hash);
+        }
+    }
+};
+
 </script>
 </body><script type="application/ld+json">
 {
