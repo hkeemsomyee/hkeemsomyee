@@ -112,6 +112,9 @@ window.onload = () => {
 </script>
 
     <title>مكتبة طيبة المحبين وروضة المحبوبين</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
     <style>
         /* التنسيقات العامة */
@@ -415,37 +418,89 @@ window.onload = () => {
 };
 
 </script>
-</body><script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "ItemList",
-  "itemListElement": [
-    {
-      "@type": "ListItem",
-      "position": 1,
-      "name": "قسم التوحيد والعقيدة",
-      "url": "https://almhben.vercel.app/#tauheed"
-    },
-    {
-      "@type": "ListItem",
-      "position": 2,
-      "name": "قسم الموالد النبوية",
-      "url": "https://almhben.vercel.app/#mwalid"
-    },
-    {
-      "@type": "ListItem",
-      "position": 3,
-      "name": "قسم الدرر البهية والجواهر السنية",
-      "url": "https://almhben.vercel.app/#dorar"
-    },
-    {
-      "@type": "ListItem",
-      "position": 4,
-      "name": "قسم قصائد طيبة المحبين",
-      "url": "https://almhben.vercel.app/#poems"
-    }
-  ]
-}
-</script>
+    <script type="module">
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-app.js";
+      import { getFirestore, collection, getDocs } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-firestore.js";
 
+      // إعدادات مشروعك studio-ucjz7
+      const firebaseConfig = {
+        apiKey: "AIzaSyC7KqrUlya0k6zyot9w_8QotWvI86FDlvc",
+        authDomain: "studio-ucjz7.firebaseapp.com",
+        projectId: "studio-ucjz7",
+        storageBucket: "studio-ucjz7.firebasestorage.app",
+        messagingSenderId: "577313199083",
+        appId: "1:577313199083:web:1181d1341fd700e7227fae"
+      };
+
+      const app = initializeApp(firebaseConfig);
+      const db = getFirestore(app);
+
+      // وظيفة جلب البيانات من Firestore للتأكد من الربط
+      async function loadLibrary() {
+          try {
+              const querySnapshot = await getDocs(collection(db, "Library"));
+              console.log("تم الاتصال بـ Firebase بنجاح!");
+              querySnapshot.forEach((doc) => {
+                  console.log("كتاب من Firestore:", doc.data().title);
+              });
+          } catch (e) {
+              console.error("خطأ في الاتصال:", e);
+          }
+      }
+
+      // تشغيل الوظائف الأصلية للموقع
+      function fillList(id, list, prefix) {
+          const container = document.getElementById(id);
+          if (!container) return;
+          container.innerHTML = ''; 
+          list.forEach((item, index) => {
+              const fileNum = index + 1;
+              container.innerHTML += `
+                  <div class="book-card">
+                      <div class="book-info">
+                          <div class="book-title">${item.t}</div>
+                          <div class="book-desc">${item.d}</div>
+                      </div>
+                      <div class="btn-group">
+                          <a href="pdf/${prefix}${fileNum}.pdf" class="btn btn-download" target="_blank">تحميل PDF</a>
+                      </div>
+                  </div>`;
+          });
+      }
+
+      window.onload = () => {
+          if (typeof listTauheed !== 'undefined') fillList('tauheed', listTauheed, 'roda');
+          if (typeof listMwalid !== 'undefined') fillList('mwalid', listMwalid, 'mwled');
+          if (typeof listPoems !== 'undefined') fillList('poems', listPoems, 'te');
+          
+          loadLibrary();
+
+          const hash = window.location.hash.replace('#', '');
+          if (hash && document.getElementById(hash)) {
+              if (typeof toggleSection === "function") toggleSection(hash);
+          }
+      };
+    </script>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "ItemList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "قسم التوحيد والعقيدة",
+          "url": "https://studio-ucjz7.web.app/#tauheed"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "قسم الموالد النبوية",
+          "url": "https://studio-ucjz7.web.app/#mwalid"
+        }
+      ]
+    }
+    </script>
+</body>
 </html>
