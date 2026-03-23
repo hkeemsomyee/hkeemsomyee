@@ -418,60 +418,37 @@ window.onload = () => {
 };
 
 </script>
-    <div class="main-category" style="background-color: #054d3f; margin-top: 20px;">
-        <img src="m3.png" class="section-logo" alt="أيقونة">
-        <h2>إصداراتنا المحدثة</h2>
-        <p class="category-desc">كتب تضاف تلقائياً من قاعدة بيانات Firebase</p>
-        <button onclick="toggleSection('firebase-list')" class="open-btn" style="background-color: #d4a373; color: white;">عرض الكتب الجديدة</button>
-        
-        <div id="firebase-list" class="books-container" style="display: none; background: white; border-radius: 15px; padding: 15px; margin-top: 10px; color: #1b4332;">
-            <div id="fb-loader" style="text-align: center; padding: 20px;">جاري تحميل الكتب...</div>
-        </div>
-    </div>
+</body><script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "قسم التوحيد والعقيدة",
+      "url": "https://almhben.vercel.app/#tauheed"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "قسم الموالد النبوية",
+      "url": "https://almhben.vercel.app/#mwalid"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "قسم الدرر البهية والجواهر السنية",
+      "url": "https://almhben.vercel.app/#dorar"
+    },
+    {
+      "@type": "ListItem",
+      "position": 4,
+      "name": "قسم قصائد طيبة المحبين",
+      "url": "https://almhben.vercel.app/#poems"
+    }
+  ]
+}
+</script>
 
-    <script type="module">
-      import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-app.js";
-      import { getFirestore, collection, getDocs } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-firestore.js";
-
-      const firebaseConfig = {
-        apiKey: "AIzaSyC7KqrUlya0k6zyot9w_8QotWvI86FDlvc",
-        authDomain: "studio-ucjz7.firebaseapp.com",
-        projectId: "studio-ucjz7",
-        storageBucket: "studio-ucjz7.firebasestorage.app",
-        messagingSenderId: "577313199083",
-        appId: "1:577313199083:web:1181d1341fd700e7227fae"
-      };
-
-      const app = initializeApp(firebaseConfig);
-      const db = getFirestore(app);
-
-      async function fetchFirebaseBooks() {
-          const container = document.getElementById('firebase-list');
-          try {
-              const querySnapshot = await getDocs(collection(db, "Library"));
-              if (querySnapshot.empty) {
-                  container.innerHTML = "<p style='text-align:center;'>لا توجد كتب مضافة حالياً في السحابة.</p>";
-                  return;
-              }
-              container.innerHTML = ''; // مسح رسالة التحميل
-              querySnapshot.forEach((doc) => {
-                  const data = doc.data();
-                  container.innerHTML += `
-                      <div class="book-item" style="background: #f9f9f9; border-right: 5px solid #0b7a61; margin-bottom: 12px; padding: 15px; border-radius: 8px;">
-                          <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap;">
-                              <strong>${data.title}</strong>
-                              <a href="${data.downloadUrl}" target="_blank" style="background: #0b7a61; color: white; padding: 5px 15px; text-decoration: none; border-radius: 5px; font-size: 13px;">تحميل PDF</a>
-                          </div>
-                          <div style="font-size: 13px; color: #666; margin-top: 5px;">تأليف: ${data.author}</div>
-                      </div>`;
-              });
-          } catch (e) {
-              container.innerHTML = "<p style='color:red; text-align:center;'>فشل جلب البيانات. تأكد من إعدادات Firestore.</p>";
-          }
-      }
-
-      // تشغيل الجلب فور تحميل الصفحة دون المساس بالوظائف القديمة
-      window.addEventListener('load', fetchFirebaseBooks);
-    </script>
-</body>
 </html>
