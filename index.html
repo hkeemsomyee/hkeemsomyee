@@ -10,6 +10,7 @@
     <meta property="og:description" content="المكتبة الرسمية للسيد عبدالله هاشم السروري - تضم مؤلفات في التوحيد، العقيدة، الموالد النبوية، والقصائد الروحانية.">
     <meta property="og:image" content="m8.png">
     <meta property="og:type" content="website">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3471082371880025" crossorigin="anonymous"></script>
 
@@ -302,11 +303,63 @@ window.onload = () => {
     <a href="articles_choice.html" target="_blank" class="open-btn" style="text-decoration: none; display: inline-block; text-align: center; background-color: #c5a059;">فتح القسم</a>
 </div>
 
-    <section class="author-profile" id="contact" style="text-align: center;">
-        <h3>تواصل معنا</h3>
-        <a href="https://wa.me/+967734404355" style="text-decoration:none; color:#25D366; font-weight:bold; margin:0 15px;">واتساب</a>
-        <a href="https://t.me/tebatalmhbeen" style="text-decoration:none; color:#0088cc; font-weight:bold; margin:0 15px;">تيليجرام</a>
-    </section>
+<section class="author-profile" id="contact" style="text-align: center;">
+    <h3>تواصل معنا</h3>
+    <div class="social-links">
+        <a href="https://wa.me/+967734404355" class="social-btn whatsapp">
+            <i class="fab fa-whatsapp"></i> واتساب
+        </a>
+        
+        <a href="https://t.me/tebatalmhbeen" class="social-btn telegram">
+            <i class="fab fa-telegram-plane"></i> تيليجرام
+        </a>
+        
+        <a href="https://www.facebook.com/share/1FRftzoCfg/" target="_blank" class="social-btn facebook">
+            <i class="fab fa-facebook-f"></i> فيسبوك
+        </a>
+    </div>
+</section>
+
+<style>
+/* تنسيق أزرار التواصل */
+.social-links {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
+    margin-top: 15px;
+}
+
+.social-btn {
+    text-decoration: none;
+    padding: 10px 20px;
+    border-radius: 50px;
+    font-weight: bold;
+    color: white !important;
+    display: flex;
+    align-items: center;
+    gap: 8px; /* مسافة بين الأيقونة والنص */
+    transition: 0.3s;
+    font-size: 15px;
+}
+
+.social-btn i {
+    font-size: 18px;
+}
+
+/* ألوان المنصات */
+.whatsapp { background-color: #25D366; }
+.telegram { background-color: #0088cc; }
+.facebook { background-color: #1877F2; }
+
+/* تأثير عند تمرير الماوس */
+.social-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    opacity: 0.9;
+}
+</style>
+
 </div>
 
 <button class="share-fab" onclick="sharePage()">🔗</button>
