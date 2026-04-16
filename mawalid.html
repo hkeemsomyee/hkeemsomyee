@@ -9,21 +9,22 @@
     
     <title>قسم الموالد النبوية - مكتبة طيبة المحبين</title>
     <meta name="description" content="مجموعة من الموالد النبوية (أطلس السِّير النبوية الغرر) التي تسرد محطات ولادة ونشأة خير البرية ﷺ بصيغة PDF.">
-    <meta name="keywords" content="موالد نبوية, أطلس السير النبوية, طيبة المحبين, سيرة نبوية, كتب PDF">
     
     <style>
+        /* التنسيقات الأصلية مع تحسينات بسيطة */
         body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f4f7f6; margin: 0; padding: 20px; }
         .container { max-width: 800px; margin: auto; }
         .header-box { background-color: #086351; color: white; padding: 30px; border-radius: 15px; text-align: center; margin-bottom: 20px; }
         .book-card { background: white; margin-bottom: 15px; padding: 20px; border-radius: 12px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); border-right: 5px solid #086351; }
         .book-title { color: #086351; margin: 0 0 10px 0; font-size: 19px; }
         .book-desc { color: #555; font-size: 15px; margin-bottom: 15px; }
-        .btn-group { display: flex; gap: 10px; }
-        .btn { padding: 8px 25px; border-radius: 8px; text-decoration: none; font-weight: bold; font-size: 14px; transition: 0.3s; text-align: center; }
-        .read-btn { border: 2px solid #086351; color: #086351; }
+        .btn-group { display: flex; gap: 10px; flex-wrap: wrap; }
+        .btn { padding: 8px 25px; border-radius: 8px; text-decoration: none; font-weight: bold; font-size: 14px; transition: 0.3s; text-align: center; cursor: pointer; border: none; }
+        .read-btn { border: 2px solid #086351; color: #086351; background: transparent; }
         .read-btn:hover { background-color: #e8f5f3; }
         .download-btn { background-color: #086351; color: white !important; }
         .download-btn:hover { background-color: #064d3e; }
+        .share-btn { background-color: #25d366; color: white !important; } /* لون الواتساب للمشاركة */
         .back-home { display: block; text-align: center; margin-top: 30px; color: #2c3e50; text-decoration: none; font-weight: bold; }
     </style>
 </head>
@@ -64,16 +65,55 @@
         {t:"مولد اللُّبَاب", d:"اللُّبَاب في مولد جوهر الألباب وأحب الأحباب سيدنا محمد ﷺ"}
     ];
 
+    /**
+     * وظيفة لتنظيف اسم الملف من الرموز الخاصة
+     * لتجنب مشاكل التحميل في بعض الأنظمة
+     */
+    function sanitizeForDownload(text) {
+        return text.replace(/[ﷺ()]/g, "").trim();
+    }
+
+    /**
+     * وظيفة مشاركة الرابط
+     */
+    async function shareBook(title, fileName) {
+        const fullUrl = window.location.origin + '/' + fileName;
+        if (navigator.share) {
+            try {
+                await navigator.share({
+                    title: title,
+                    text: `إليك كتاب: ${title} من مكتبة طيبة المحبين`,
+                    url: fullUrl
+                });
+            } catch (err) {
+                console.log("تم إلغاء المشاركة أو حدث خطأ");
+            }
+        } else {
+            // حل بديل إذا كان المتصفح لا يدعم المشاركة (مثل نسخ الرابط)
+            alert("رابط الملف هو: " + fullUrl);
+        }
+    }
+
     const container = document.getElementById('books-list');
+    
     mwalidData.forEach((book, index) => {
-        const fileName = `mwled${index + 1}.pdf`;
+        const fileNum = index + 1;
+        const fileName = `mwled${fileNum}.pdf`;
+        const downloadName = sanitizeForDownload(book.t);
+
         container.innerHTML += `
             <div class="book-card">
                 <h3 class="book-title">${book.t}</h3>
                 <p class="book-desc">${book.d}</p>
                 <div class="btn-group">
                     <a href="${fileName}" target="_blank" class="btn read-btn">قراءة</a>
-                    <a href="${fileName}" download="${book.t}.pdf" class="btn download-btn">تحميل</a>
+                    
+                    <a href="${fileName}" 
+                       download="${downloadName}.pdf" 
+                       class="btn download-btn">تحميل باسمه</a>
+                    
+                    <button onclick="shareBook('${book.t}', '${fileName}')" 
+                            class="btn share-btn">مشاركة</button>
                 </div>
             </div>
         `;
