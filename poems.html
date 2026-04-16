@@ -77,10 +77,34 @@
         {t:"المؤلف في سطور", d:"نبذة عن حياة السيد عبدالله هاشم السروري."}
     ];
 
+    // دالة لتنظيف النص ليصبح صالحاً كاسم ملف (إزالة الرموز التي قد تسبب مشاكل)
+    function sanitizeFilename(name) {
+        return name.replace(/[ﷺ()]/g, '').trim();
+    }
+
+    // دالة لمشاركة الرابط بعنوان القصيدة
+    async function sharePoem(title, url) {
+        if (navigator.share) {
+            try {
+                await navigator.share({
+                    title: title,
+                    text: `شاهد قصيدة: ${title}`,
+                    url: window.location.origin + '/' + url,
+                });
+            } catch (err) {
+                console.log("خطأ في المشاركة:", err);
+            }
+        } else {
+            alert("خاصية المشاركة غير مدعومة في هذا المتصفح، يمكنك نسخ الرابط.");
+        }
+    }
+
     const container = document.getElementById('poems-list');
     listPoems.forEach((poem, index) => {
         const fileNum = index + 1;
         const fileName = `te${fileNum}.pdf`;
+        const cleanTitle = sanitizeFilename(poem.t);
+
         container.innerHTML += `
             <div class="book-card">
                 <div class="book-info">
@@ -89,7 +113,8 @@
                 </div>
                 <div class="btn-group">
                     <a href="${fileName}" target="_blank" class="btn read-btn">قراءة</a>
-                    <a href="${fileName}" download="${poem.t}.pdf" class="btn download-btn">تحميل</a>
+                    <a href="${fileName}" download="${cleanTitle}.pdf" class="btn download-btn">تحميل</a>
+                    <button onclick="sharePoem('${poem.t}', '${fileName}')" class="btn read-btn" style="cursor:pointer">مشاركة</button>
                 </div>
             </div>
         `;
